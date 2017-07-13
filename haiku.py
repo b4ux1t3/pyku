@@ -8,7 +8,7 @@ def main():
 	
 	output = firstFive + "\n" + seven + "\n" + secondFive
 	
-	print output
+	print(output)
 	f = open("haiku.txt", "w")
 	f.write(output)
 	f.close()
