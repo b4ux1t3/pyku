@@ -6,7 +6,7 @@ def main():
 	secondFive = getSecondFive(firstFive)
 	seven = random.choice(sevens)
 	
-	output = firstFive + "\n" + seven + "\n" + secondFive
+	output = f"{firstFive}\n{seven}\n{secondFive}"
 	
 	print(output)
 	f = open("haiku.txt", "w")
