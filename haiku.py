@@ -1,9 +1,18 @@
 import random
-fives = open("five.txt").read().splitlines()
-sevens = open("seven.txt").read().splitlines()
+import sys
+
+
+
 def main():
-	firstFive = getFirstFive()
-	secondFive = getSecondFive(firstFive)
+	if sys.argv[1] == '-p':
+		fives = open("proxy/five.txt").read().splitlines()
+		sevens = open("proxy/seven.txt").read().splitlines()
+	else:
+		fives = open("five.txt").read().splitlines()
+		sevens = open("seven.txt").read().splitlines()
+
+	firstFive = getFirstFive(fives)
+	secondFive = getSecondFive(fives, firstFive)
 	seven = random.choice(sevens)
 	
 	output = f"{firstFive}\n{seven}\n{secondFive}"
@@ -13,7 +22,7 @@ def main():
 	f.write(output)
 	f.close()
 	
-def getFirstFive():
+def getFirstFive(fives):
 	firstFive = random.choice(fives)
 	if firstFive == "":
 		firstFive = getFirstFive()
@@ -21,10 +30,10 @@ def getFirstFive():
 	else:
 		return firstFive
 		
-def getSecondFive(firstFive):
+def getSecondFive(fives, firstFive):
 	secondFive = random.choice(fives)
 	if secondFive == firstFive or secondFive == "":
-		secondFive = getSecondFive(firstFive)
+		secondFive = getSecondFive(fives, firstFive)
 		return secondFive
 	else:
 		return secondFive
