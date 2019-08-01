@@ -4,7 +4,7 @@ import sys
 
 
 def main():
-	if sys.argv[1] == '-p':
+	if len(sys.argv) > 1 and sys.argv[1] == '-p':
 		fives = open("proxy/five.txt").read().splitlines()
 		sevens = open("proxy/seven.txt").read().splitlines()
 	else:
